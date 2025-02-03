@@ -1,0 +1,45 @@
+{% load static %}
+
+  <div class="container d-flex justify-content-center align-items-center">
+    <div class="form-container col-md-6">
+      <h2 class="text-center mb-4">User Registration</h2>
+
+      <form method="post">
+        {% csrf_token %}
+
+        <div class="form-floating mb-3">
+          {{ regform.first_name }}
+          <label for="id_first_name">First Name</label>
+        </div>
+
+        <div class="form-floating mb-3">
+          {{ regform.last_name }}
+          <label for="id_last_name">Last Name</label>
+        </div>
+
+        <div class="form-floating mb-3">
+          {{ regform.username }}
+          <label for="id_username">Username</label>
+        </div>
+
+        <div class="form-floating mb-3">
+          {{ regform.email }}
+          <label for="id_email">Email address</label>
+          <div id="emailHelp" class="form-text text-center fst-italic">- we'll never share your email with anyone else -</div>
+        </div>
+
+        <div class="form-floating mb-3">
+          {{ regform.password }}
+          <label for="id_password">Password</label>
+        </div>
+
+        <!--        <div class="mb-3 form-check">-->
+        <!--          <input type="checkbox" class="form-check-input border border-dark" id="checkbox" name="checkbox">-->
+        <!--          <label class="form-check-label" for="checkbox">Check me out</label>-->
+        <!--        </div>-->
+
+        <button type="submit" name="register_form" class="btn btn-primary">Submit</button>
+      </form>
+      <div class="text-end"><a class="link-underline link-underline-opacity-0 fs-5 fw-bold m-0 p-0 text-dark" href="">Login <strong class="text-success fs-4 ">?</strong></a></div>
+    </div>
+  </div>

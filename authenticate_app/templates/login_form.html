@@ -1,0 +1,30 @@
+{% load static %}
+
+  <div class="container d-flex justify-content-center align-items-center">
+    <div class="form-container col-md-6">
+      <h2 class="text-center mb-4">User Login</h2>
+
+      <form method="post">
+        {% csrf_token %}
+        {{logform.as_p}}
+
+        <div class="form-floating mb-3 col-lg-6">
+          <select name="login_as" id="id_type" class="form-select" aria-label="login as" required>
+            <option value="writer" class="form-control">Writer</option>
+            <option value="viewer" class="form-control" selected>Viewer</option>
+          </select>
+          <label for="id_type">Login as</label>
+        </div>
+
+        <button type="submit" name="login_form" class="btn btn-primary">Login</button>
+
+        <div class="mt-3 text-center">
+          <a class="link-underline link-underline-opacity-0 text-danger" href="">Forgot Password?</a>
+        </div>
+        <div class="mt-2 text-center">
+          <p>Don't have an account? <a class="link-underline link-underline-opacity-0 fs-4 m-0 p-0 text-info"
+              href="">Register here</a></p>
+        </div>
+      </form>
+    </div>
+  </div>

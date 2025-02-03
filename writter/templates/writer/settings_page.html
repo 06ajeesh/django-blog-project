@@ -1,0 +1,61 @@
+{% extends 'writer/index.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">Account Settings</h1>
+
+    <div class="my-4">
+        <h3>Hello, {{ request.user.username }}!</h3>
+        <p>Here you can update your account details, or delete your account permanently.</p>
+    </div>
+
+    <!-- Update settings form (you can add fields as per your requirement) -->
+    <div class="card">
+        <div class="card-header">
+            <h4>Update Your Settings</h4>
+        </div>
+        <div class="card-body">
+            <form method="POST">
+                {% csrf_token %}
+                {{form}}
+                <button type="submit" name="update_account" class="btn btn-primary">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Delete Account Section -->
+    <div class="card mt-4">
+        <div class="card-header text-danger">
+            <h4>Delete Your Account</h4>
+        </div>
+        <div class="card-body">
+            <p>If you wish to delete your account, please click the button below. This action cannot be undone.</p>
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                Delete Account
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for Delete Account Confirmation -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Confirm Account Deletion</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to permanently delete your account? This action cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form method="POST" action="#">
+                    {% csrf_token %}
+                    <button type="submit" name='delete_user' class="btn btn-danger">Delete Account</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
